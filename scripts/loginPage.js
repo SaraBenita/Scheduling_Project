@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const storedUser = users.find(user => user.email === email);
 
         if (storedUser && storedUser.password === password) {
+            // Save the current user to Local Storage
+            localStorage.setItem("currentUser", JSON.stringify(storedUser));
+
             alert("Login successful!");
             // Redirect to the home page
             window.location.href = "homePage.html";
