@@ -1,4 +1,5 @@
-import { User } from './utils/classes.js';
+import { User } from "../models/User.js";
+import { loadUsers } from "../utils/functions.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const registrationForm = document.getElementById("registrationForm");
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = document.getElementById("password").value;
 
         // Retrieve existing users from Local Storage
-        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const users = loadUsers();
 
         // Check if the email already exists
         const userExists = users.some(user => user.email === email);
@@ -32,9 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Save the updated users array to Local Storage
         localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("currentUser", JSON.stringify(newUser));
+
 
         alert("Registration successful! You can now log in.");
         // Redirect to the login page
-        window.location.href = "loginPage.html";
+        window.location.href = "calendarPage.html";
     });
 });

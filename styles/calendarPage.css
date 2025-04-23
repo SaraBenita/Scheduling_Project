@@ -1,0 +1,14 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+
+}
+
+
+#calendar {
+    max-width: 900px;
+    margin: 0 auto;
+}

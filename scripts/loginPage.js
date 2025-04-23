@@ -1,3 +1,5 @@
+import { loadUsers } from "../utils/functions.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("loginForm");
 
@@ -8,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = document.getElementById("password").value;
 
         // Retrieve users array from Local Storage
-        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const users = loadUsers();
 
         // Find user by email
         const storedUser = users.find(user => user.email === email);
@@ -19,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             alert("Login successful!");
             // Redirect to the home page
-            window.location.href = "homePage.html";
+            window.location.href = "calendarPage.html";
         } else {
             // Show an alert with options
             const retry = confirm("Invalid email or password. Would you like to register?");

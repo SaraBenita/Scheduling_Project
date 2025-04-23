@@ -7,16 +7,7 @@ export class User {
         this.password = password;
         this.todolist = todolist; // רשימת המשימות
     }
-    static getCurrentUser() {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (!currentUser) return null;
-
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const userData = users.find(user => user.userId == currentUser.userId);
-        if (!userData) return null;
-
-        return userData;
-    }
+    
 
     /* addTask(task) {
          this.todolist.push(task);
