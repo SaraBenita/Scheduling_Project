@@ -86,3 +86,23 @@ Scheduling_Project/
 3. Register a new account or use the demo account:
    - Email: bob@example.com
    - Password: 123456
+
+# Task Management Calendar Application
+
+[Previous content remains the same...]
+
+## Screenshots
+
+### Login Page
+![Login Page](./pic/loginPage.png)
+
+### Registration Page
+![Registration Page](./pic/registryPage.png)
+
+### Home Page
+![Home Page](./pic/homePage.png)
+
+### Calendar View
+![Calendar View](./pic/calendarPage.png)
+
+[Rest of the content remains the same...]
