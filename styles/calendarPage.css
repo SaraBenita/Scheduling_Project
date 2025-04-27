@@ -1,14 +1,151 @@
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    
-
+body {
+    background: radial-gradient(circle at top right, #a8edea 0%, #fed6e3 100%);
+    min-height: 100vh;
+    font-family: 'Heebo', sans-serif;
 }
 
+header {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #2d3436;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+}
+
+#user-email {
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 700;
+    background: linear-gradient(to right, #6c5ce7, #a55eea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 #calendar {
-    max-width: 900px;
-    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* עיצוב הטופס */
+#assignmentForm {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.form-control {
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-control:focus {
+    border-color: #6c5ce7;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+    transform: translateY(-2px);
+}
+
+/* עיצוב כפתורים */
+.btn {
+    padding: 0.9rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #6c5ce7, #a55eea);
+    border: none;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #a55eea, #6c5ce7);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #ff6b6b, #ff8787);
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+/* עיצוב אירועים בלוח */
+.fc-event {
+    border-radius: 8px;
+    border: none;
+    padding: 6px;
+    margin: 2px 0;
+    transition: transform 0.2s ease;
+}
+
+.fc-event:hover {
+    transform: scale(1.02);
+}
+
+.fc-button-primary {
+    background: linear-gradient(45deg, #6c5ce7, #a55eea) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3) !important;
+    border-radius: 10px !important;
+    padding: 10px 20px !important;
+}
+
+.fc-button-primary:hover {
+    background: linear-gradient(45deg, #a55eea, #6c5ce7) !important;
+    transform: translateY(-2px);
+}
+
+/* סטיילינג למודל */
+.modal-content {
+    border-radius: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.modal-header {
+    background: linear-gradient(45deg, #6c5ce7, #a55eea);
+    border-radius: 20px 20px 0 0;
+    padding: 1.5rem;
+}
+
+.modal-title {
+    color: white;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+/* התאמות נוספות */
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c5ce7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+/* אנימציות למשימות */
+.fc-event-main {
+    transition: all 0.3s ease;
+}
+
+.fc-event-main:hover {
+    transform: translateY(-2px);
 }

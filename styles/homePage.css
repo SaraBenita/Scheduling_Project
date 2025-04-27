@@ -1,106 +1,63 @@
-/* Styling for the calendar grid */
-.calendar {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    /* 6 columns for the 6 days of the week */
-    grid-gap: 10px;
-    padding: 10px;
-    margin-top: 20px;
+body {
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.calendar-day {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f4f4f4;
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.lead {
+    color: #576574;
+    font-size: 1.25rem;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
     border-radius: 8px;
 }
 
-.calendar-day h3 {
-    margin-top: 0;
-    font-size: 1.2em;
-    text-align: center;
-}
-
-/* wrapper שמכיל את עמודת השעות ועמודות הימים */
-.calendar-wrapper {
-    display: flex;
-    gap: 16px;
-}
-
-/* עמודת השעות */
-.hours-column {
-    display: flex;
-    flex-direction: column;
-    margin-top: 40px;
-    /* כדי ליישר עם כותרות הימים */
-}
-
-/* כל תוית שעה */
-.hour-label {
-    height: 48px;
-    /* גובה תואם ל־time-slot */
-    line-height: 48px;
-    /* יישור טקסט אנכית */
-    padding-left: 8px;
-    font-size: 0.9rem;
-    color: #7f8c8d;
-    border-bottom: 8px solid transparent;
-    /* תואם לפריקות בין slots */
-}
-
-.time-slot {
-    height: 40px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    margin: 5px 0;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    border-radius: 4px;
-}
-
-.time-slot h4 {
-    font-size: 0.9em;
-    padding: 5px;
-    text-align: center;
-}
-
-.event {
-    width: 90%;
-    margin: 5px;
-    padding: 5px;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: lightgray;
-}
-
-.urgent {
-    background-color: red;
-}
-
-.normal {
-    background-color: yellow;
-}
-
-.calendar-day.drag-over {
-    border: 2px dashed #000;
-}
-
-#add-task-button {
-    margin: 20px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
+.btn-primary {
+    background-color: #4834d4;
     border: none;
-    cursor: pointer;
-    border-radius: 5px;
 }
 
-#add-task-button:hover {
-    background-color: #0056b3;
+.btn-primary:hover {
+    background-color: #686de0;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #7f8c8d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #95a5a6;
+    transform: translateY(-2px);
+}
+
+a {
+    color: #4834d4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #686de0;
 }

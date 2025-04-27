@@ -1,5 +1,5 @@
 import { Assignment } from '../models/Assignment.js';
-import { getCurrentUser, loadUserTodoList, logoutUser, saveAssignmentToUser } from '../utils/functions.js';
+import { getCurrentUser, loadUserTodoList, logoutUser, saveAssignmentToUser, editAssignmentOfUser, deleteAssignmentFromUser } from '../utils/functions.js';
 
 let calendar;
 
@@ -26,17 +26,96 @@ document.addEventListener('DOMContentLoaded', function () {
         events: todoList.map(assignment => {
             const startDateTime = new Date(`${assignment.dataOfPublished}T${assignment.dueTime}`);
             return {
-                title: assignment.title,
-                start: startDateTime,
-                description: assignment.description + `\n נוצר על ידי ${assignment.fromWhomtheTaskIs}`,
-                color: assignment.status === 'פתוח' ? 'green' : assignment.status === 'בוצע' ? 'gray' : 'red'
+                id: assignment.assignmentId, // מזהה ייחודי של המשימה
+                title: assignment.title, // כותרת המשימה
+                start: startDateTime, // תאריך ושעת התחלה
+                color: assignment.status === 'פתוח' ? 'green' : assignment.status === 'בוצע' ? 'gray' : 'red', // צבע לפי סטטוס
+                extendedProps: { // מאפיינים מותאמים אישית
+                    description: assignment.description,
+                    label: assignment.label,
+                    urgency: assignment.urgency,
+                    status: assignment.status,
+                    fromWhomtheTaskIs: assignment.fromWhomtheTaskIs,
+                    priority: assignment.priority
+                }
             };
         }),
         eventClick: function (info) {
-            alert(
-                `כותרת: ${info.event.title}\n` +
-                `תיאור: ${info.event.extendedProps.description}`
-            );
+            // מציאת המודל
+            const editModal = new bootstrap.Modal(document.getElementById('editEventModal'));
+
+            // מילוי השדות במידע הקיים
+            document.getElementById('editId').value = info.event.id;
+            document.getElementById('editTitle').value = info.event.title;
+            document.getElementById('editDescription').value = info.event.extendedProps.description;
+            document.getElementById('editDate').value = info.event.start.toISOString().split('T')[0];
+            document.getElementById('editTime').value = info.event.start.toISOString().split('T')[1].slice(0, 5);
+            document.getElementById('editPriority').value = info.event.extendedProps.priority || 'בינוני';
+            document.getElementById('editLabel').value = info.event.extendedProps.label || '';
+            document.getElementById('editStatus').value = info.event.extendedProps.status || 'פתוח';
+            document.getElementById('editFromWhom').value = info.event.extendedProps.fromWhomtheTaskIs || '';
+
+            // פתיחת המודל
+            editModal.show();
+
+            // טיפול בכפתור המחיקה
+            const deleteButton = document.getElementById('DeleteButton');
+            deleteButton.onclick = function () {
+                // מחיקת האירוע מהקלנדר
+                info.event.remove();
+
+                // מחיקת המשימה מרשימת המשימות
+                const user = getCurrentUser();
+                if (user) {
+                    const success = deleteAssignmentFromUser(user.email, info.event.id);
+                    if (!success) {
+                        alert("לא הצלחנו למחוק את המשימה.");
+                    }
+                }
+
+                // סגירת המודל
+                editModal.hide();
+            };
+
+            // טיפול בשמירת הנתונים
+            const editForm = document.getElementById('editEventForm');
+            editForm.onsubmit = function (e) {
+                e.preventDefault();
+
+                // יצירת אובייקט משימה מעודכן
+                const updatedAssignment = {
+                    assignmentId: document.getElementById('editId').value,
+                    title: document.getElementById('editTitle').value,
+                    description: document.getElementById('editDescription').value,
+                    dataOfPublished: document.getElementById('editDate').value,
+                    dueTime: document.getElementById('editTime').value,
+                    label: document.getElementById('editLabel').value,
+                    urgency: document.getElementById('editPriority').value,
+                    status: document.getElementById('editStatus').value,
+                    fromWhomtheTaskIs: document.getElementById('editFromWhom').value
+                };
+
+                // עדכון האירוע בקלנדר
+                info.event.setProp('title', updatedAssignment.title);
+                info.event.setExtendedProp('description', updatedAssignment.description);
+                info.event.setStart(new Date(`${updatedAssignment.dataOfPublished}T${updatedAssignment.dueTime}`));
+                info.event.setExtendedProp('priority', updatedAssignment.urgency);
+                info.event.setExtendedProp('label', updatedAssignment.label);
+                info.event.setExtendedProp('status', updatedAssignment.status);
+                info.event.setExtendedProp('fromWhomtheTaskIs', updatedAssignment.fromWhomtheTaskIs);
+
+
+                const user = getCurrentUser();
+                if (user) {
+                    const success = editAssignmentOfUser(user.email, updatedAssignment);
+                    if (!success) {
+                        alert("לא הצלחנו לשמור את המשימה המעודכנת.");
+                    }
+                }
+
+                // סגירת המודל
+                editModal.hide();
+            };
         },
         views: {
             timeGridWeek: {
