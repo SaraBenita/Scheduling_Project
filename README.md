@@ -65,15 +65,13 @@ A web-based calendar application for managing tasks and assignments with user au
 
 ## Screenshots
 
-### Login Page
-![Login Page](./pic/loginPage.png)
-
 ### Registration Page
 ![Registration Page](./pic/registerPage.png)
+
+### Login Page
+![Login Page](./pic/loginPage.png)
 
 ### Calendar View
 ![Calendar View](./pic/SchedulPage.png)
 
 ![Home Page](./pic/addNewAssiment.png)
-
-[Rest of the content remains the same...]
