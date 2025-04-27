@@ -28,35 +28,7 @@ A web-based calendar application for managing tasks and assignments with user au
 ### Libraries & Frameworks
 - Bootstrap 5.3.3
 - FullCalendar 5.11.0
-
-## Project Structure
-
-```
-Scheduling_Project/
-├── data/
-│   └── seed.js         # Initial data seeding
-├── models/
-│   ├── Assignment.js   # Task model
-│   └── User.js         # User model
-├── pages/
-│   ├── calendarPage.html
-│   ├── homePage.html
-│   ├── loginPage.html
-│   └── registryPage.html
-├── scripts/
-│   ├── calendarPage.js
-│   ├── homePage.js
-│   ├── loginPage.js
-│   └── registryPage.js
-├── styles/
-│   ├── calendarPage.css
-│   ├── homePage.css
-│   ├── loginPage.css
-│   └── registryPage.css
-└── utils/
-    └── functions.js    # Utility functions
-```
-
+  
 ## Key Features Details
 
 ### User Management
