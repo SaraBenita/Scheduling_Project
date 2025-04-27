@@ -97,12 +97,11 @@ Scheduling_Project/
 ![Login Page](./pic/loginPage.png)
 
 ### Registration Page
-![Registration Page](./pic/registryPage.png)
-
-### Home Page
-![Home Page](./pic/homePage.png)
+![Registration Page](./pic/registerPage.png)
 
 ### Calendar View
-![Calendar View](./pic/calendarPage.png)
+![Calendar View](./pic/SchedulPage.png)
+
+![Home Page](./pic/addNewAssiment.png)
 
 [Rest of the content remains the same...]
