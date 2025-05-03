@@ -134,6 +134,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 info.event.setExtendedProp('label', updatedAssignment.label);
                 info.event.setExtendedProp('status', updatedAssignment.status);
                 info.event.setExtendedProp('fromWhomtheTaskIs', updatedAssignment.fromWhomtheTaskIs);
+                let newColor;
+                switch (updatedAssignment.status) {
+                    case 'פתוח':
+                        newColor = 'green';
+                        break;
+                    case 'בוצע':
+                        newColor = 'gray';
+                        break;
+                    default:
+                        newColor = 'red';
+                }
+
+                info.event.setProp('backgroundColor', newColor);
+                info.event.setProp('borderColor', newColor);
+
+
+
 
 
                 const user = getCurrentUser();
@@ -227,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const option = document.createElement('option');
             option.value = time;
             option.textContent = time;
-            
+
             // If the time is already occupied on the selected date, disable it
             if (todoList.some(assignment => assignment.dueTime === time && assignment.dataOfPublished === selectedDate)) {
                 option.disabled = true;
