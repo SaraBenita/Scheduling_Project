@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
         events: todoList.map(assignment => {
             const startDateTime = `${assignment.dataOfPublished}T${assignment.dueTime}`;
 
-            console.log(startDateTime, assignment.endTime);
             return {
                 id: assignment.assignmentId, // מזהה ייחודי של המשימה
                 title: assignment.title, // כותרת המשימה
@@ -228,13 +227,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const option = document.createElement('option');
             option.value = time;
             option.textContent = time;
-            console.log(time);
-            todoList.map((time) => {
-                console.log(time.dueTime)
-            })
+            
             // If the time is already occupied on the selected date, disable it
             if (todoList.some(assignment => assignment.dueTime === time && assignment.dataOfPublished === selectedDate)) {
-                console.log(time);
                 option.disabled = true;
             }
 
