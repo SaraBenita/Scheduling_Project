@@ -47,23 +47,27 @@ document.addEventListener('DOMContentLoaded', function () {
             // מציאת המודל
             const editModal = new bootstrap.Modal(document.getElementById('editEventModal'));
 
+            // קריאה לפונקציה כדי להשבית זמנים תפוסים    
+
+            disableOccupiedHoursEditForm();
+
             console.log(info.event);
             // מילוי השדות במידע הקיים
             document.getElementById('editId').value = info.event.id;
             document.getElementById('editTitle').value = info.event.title;
             document.getElementById('editDescription').value = info.event.extendedProps.description;
             document.getElementById('editDate').value = info.event.start.toISOString().split('T')[0];
-            document.getElementById('editTimeSelect').value;
+            document.getElementById('editTimeSelect').value = info.event.start.toISOString().split('T')[1].slice(0, 5);
             document.getElementById('editPriority').value = info.event.extendedProps.priority || 'בינוני';
             document.getElementById('editLabel').value = info.event.extendedProps.label || '';
             document.getElementById('editStatus').value = info.event.extendedProps.status || 'פתוח';
             document.getElementById('editFromWhom').value = info.event.extendedProps.fromWhomtheTaskIs || '';
 
+
             console.log(info.event.start.toISOString().split('T')[0], info.event.start.toISOString().split('T')[1].slice(0, 5));
             // פתיחת המודל
             editModal.show();
 
-            disableOccupiedHoursEditForm(); // הסתר שעות תפוסות שנבחרו
 
             // טיפול בכפתור המחיקה
             const deleteButton = document.getElementById('DeleteButton');
@@ -121,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const formattedStartDate = startDateUTC.toISOString().replace('T', ' ').slice(0, 16); // "2025-04-28 11:00"
                 const formattedEndDate = endDateUTC.toISOString().replace('T', ' ').slice(0, 16); // "2025-04-28 12:00"
 
-                console.log(`Start: ${formattedStartDate}, End: ${formattedEndDate}`);
 
 
 
@@ -256,14 +259,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+
     // קריאה לפונקציה זו כאשר המשתמש בוחר תאריך
     document.getElementById("dataOfPublished").addEventListener("change", function () {
         disableOccupiedHoursCreateForm();
     });
 
-    // קריאה לפונקציה כדי להשבית זמנים תפוסים    
-
-    disableOccupiedHoursEditForm();
 
 
 
