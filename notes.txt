@@ -1,0 +1,11 @@
+שלב 1: הוסף את השינויים שלך:
+
+git add .
+
+שלב 2: בצע קומיט:
+
+git commit -m "תיאור השינויים שעשית"
+
+שלב 3: דחוף את השינויים ל-GitHub:
+
+git push origin feature-update

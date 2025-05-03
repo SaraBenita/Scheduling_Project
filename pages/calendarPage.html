@@ -30,36 +30,49 @@
         </div>
     </main>
 
+    <button id="newAssignmentBtn" class="btn btn-primary">הוסף משימה חדשה</button>
 
-    <h2 class="mt-5">הוסף משימה חדשה</h2>
-    <form id="assignmentForm" class="mb-4">
-        <div class="mb-2">
-            <input type="text" class="form-control" placeholder="תגית" id="label">
-        </div>
-        <div class="mb-2">
-            <input type="text" class="form-control" placeholder="כותרת" id="title" required>
-        </div>
-        <div class="mb-2">
-            <textarea class="form-control" placeholder="תיאור" id="description"></textarea>
-        </div>
-        <div class="mb-2">
-            <input type="date" class="form-control" id="dataOfPublished" required>
-        </div>
-        <div class="mb-2">
-            <input type="time" id="dueTime" class="form-control" required>
+    <div id="createModal" class="create-modal hidden">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+
+            <h2 class="mt-5">הוסף משימה חדשה</h2>
+
+            <button type="button" class="btn-close" id="close-modal" aria-label="Close"></button>
 
         </div>
+        
+        <form id="assignmentForm" class="mb-4">
+            <div class="mb-2">
+                <input type="text" class="form-control" placeholder="תגית" id="label">
+            </div>
+            <div class="mb-2">
+                <input type="text" class="form-control" placeholder="כותרת" id="title" required>
+            </div>
+            <div class="mb-2">
+                <textarea class="form-control" placeholder="תיאור" id="description"></textarea>
+            </div>
+            <div class="mb-2">
+                <input type="date" class="form-control" id="dataOfPublished" required>
+            </div>
+            <div class="mb-2" id="dueTime">
+                <select id="dueTimeSelect" class="form-control" required>
+                    <!-- Options will be added dynamically -->
+                </select>
+            </div>
 
-        <div class="mb-2">
-            <select class="form-control" id="priority">
-                <option value="גבוה">גבוה</option>
-                <option value="בינוני">בינוני</option>
-                <option value="נמוך">נמוך</option>
-            </select>
-        </div>
+            <div class="mb-2">
+                <select class="form-control" id="priority">
+                    <option value="גבוה">גבוה</option>
+                    <option value="בינוני">בינוני</option>
+                    <option value="נמוך">נמוך</option>
+                </select>
+            </div>
 
-        <button type="submit" class="btn btn-primary">הוסף</button>
-    </form>
+            <button type="submit" class="btn btn-primary">הוסף</button>
+        </form>
+    </div>
+
+
 
     <div class="modal fade" id="editEventModal" tabindex="-1" aria-labelledby="editEventModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -88,7 +101,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="editTime" class="form-label">שעה</label>
-                            <input type="time" min="08:00" max="18:00" class="form-control" id="editTime" required>
+                            <select id="editTimeSelect" class="form-control" required>
+                                <!-- Options will be added dynamically -->
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="editLabel" class="form-label">תווית</label>
